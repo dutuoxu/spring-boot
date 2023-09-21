@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'org.springframework.boot'
+version '2.7.16-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+//dependencies {
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+//}
+
+dependencies {
+	annotationProcessor(project(":spring-boot-project:spring-boot-tools:spring-boot-configuration-processor"))
+	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-web"))
+	implementation(enforcedPlatform(project(":spring-boot-project:spring-boot-dependencies")))
+	implementation(project(":spring-boot-project:spring-boot"))
+	implementation("jakarta.validation:jakarta.validation-api")
+}
+
+test {
+    useJUnitPlatform()
+}
