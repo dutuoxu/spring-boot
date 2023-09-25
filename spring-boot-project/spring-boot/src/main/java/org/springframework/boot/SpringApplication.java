@@ -257,14 +257,27 @@ public class SpringApplication {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySources) {
+
+		//SpringApplication.run(Main.class, args); 这启动的话 this.resourceLoader会为null
 		this.resourceLoader = resourceLoader;
 		Assert.notNull(primarySources, "PrimarySources must not be null");
+
+		// this.primarySources的变量类型为Set<Class<?>>
 		this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
+
+		// this.webApplicationType的变量类型为WebApplicationType
+		// 一般的web应用会把WebApplicationType.SERVLET 赋值过去
 		this.webApplicationType = WebApplicationType.deduceFromClasspath();
+
+		// this.bootstrapRegistryInitializers的变量类型为List<BootstrapRegistryInitializer>
 		this.bootstrapRegistryInitializers = new ArrayList<>(
 				getSpringFactoriesInstances(BootstrapRegistryInitializer.class));
+
+
 		setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
 		setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
+
+		// this.mainApplicationClass的变量类型为Class<?>
 		this.mainApplicationClass = deduceMainApplicationClass();
 	}
 
