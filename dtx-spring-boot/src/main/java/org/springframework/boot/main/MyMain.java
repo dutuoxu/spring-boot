@@ -22,9 +22,9 @@ import org.springframework.boot.main.config.ConfigClass;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class Main {
+public class MyMain {
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(MyMain.class, args);
 
 		ConfigClass bean = context.getBean(ConfigClass.class);
 
